@@ -1,0 +1,5 @@
+:root[data-theme='dark']{
+    --color-primary: #3992E0;
+    --color-button-disabled: #40454C;
+    --color-button-disabled-text: #6D7379;
+}

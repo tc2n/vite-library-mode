@@ -1,3 +1,6 @@
-export function hello(): string {
-    return 'Hello World';
-}
+// Import global styles
+import './styles/index.css';
+
+// Export components
+export { Button } from './components/Button';
+
