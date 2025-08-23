@@ -1,9 +1,10 @@
 name: Publish to GitHub Packages
 
+# Trigger on version tags (v1.0.0, v2.1.3, etc.)
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*.*.*'  # Matches semantic version tags like v1.0.0, v2.1.3
 
 jobs:
   publish:
@@ -11,7 +12,93 @@ jobs:
     permissions:
       contents: read
       packages: write
-    
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: extract-version
+        run: |
+          # Get the tag name (e.g., v1.0.1)
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          # Remove 'v' prefix to get version (e.g., 1.0.1)
+          VERSION=${TAG_NAME#v}
+          echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Publishing version: $VERSION from tag: $TAG_NAME"
+
+      - name: Verify tag matches package.json version
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION="${{ steps.extract-version.outputs.version }}"
+          
+          echo "Package.json version: $PACKAGE_VERSION"
+          echo "Git tag version: $TAG_VERSION"
+          
+          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+            echo "❌ Version mismatch!"
+            echo "package.json version ($PACKAGE_VERSION) doesn't match tag version ($TAG_VERSION)"
+            exit 1
+          else
+            echo "✅ Versions match!"
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@${{ github.repository_owner }}'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: false
+
+      - name: Run linting (optional)
+        run: npm run lint
+        continue-on-error: false
+
+      - name: Build library
+        run: npm run build
+
+      - name: Verify build output exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Build failed - dist directory not found"
+            exit 1
+          fi
+          echo "✅ Build successful - dist directory created"
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release summary
+        run: |
+          echo "## 🎉 Package Published Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Package:** \`@${{ github.repository_owner }}/${{ github.event.repository.name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** \`${{ steps.extract-version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** \`${{ steps.extract-version.outputs.tag }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Install Command:" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "npm install @${{ github.repository_owner }}/${{ github.event.repository.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+  # Optional: Create a GitHub release automatically
+  create-release:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,26 +108,38 @@ jobs:
         run: |
           TAG_NAME=${GITHUB_REF#refs/tags/}
           VERSION=${TAG_NAME#v}
+          echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Update package.json version
+      - name: Generate changelog
+        id: changelog
         run: |
-          npm version ${{ steps.extract-version.outputs.version }} --no-git-tag-version
+          # Simple changelog generation (you can enhance this)
+          echo "## Changes" > changelog.md
+          echo "" >> changelog.md
+          
+          # Get commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$LAST_TAG" ]; then
+            echo "Changes since $LAST_TAG:" >> changelog.md
+            git log $LAST_TAG..HEAD --pretty=format:"- %s" >> changelog.md
+          else
+            echo "- Initial release" >> changelog.md
+          fi
+          
+          echo "" >> changelog.md
+          echo "## Installation" >> changelog.md
+          echo '```bash' >> changelog.md
+          echo "npm install @${{ github.repository_owner }}/${{ github.event.repository.name }}" >> changelog.md
+          echo '```' >> changelog.md
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@tc2n'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build library
-        run: npm run build
-
-      - name: Publish to GitHub Packages
-        run: npm publish
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.extract-version.outputs.tag }}
+          release_name: "Release ${{ steps.extract-version.outputs.tag }}"
+          body_path: changelog.md
+          draft: false
+          prerelease: false
