@@ -1,5 +1,9 @@
 :root[data-theme='dark']{
     --color-primary: #3992E0;
+    --color-body: #0D111D;
+    
     --color-button-disabled: #40454C;
     --color-button-disabled-text: #6D7379;
+
+    --color-card: #171B26;
 }

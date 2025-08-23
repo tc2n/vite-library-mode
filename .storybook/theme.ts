@@ -16,10 +16,10 @@ export default create({
   colorPrimary: '#0877DB', // --color-primary
   colorSecondary: '#585C6D',
 
-  // UI Background colors
+  // UI Background colors - using design system colors
   appBg: '#FAFBFC',
-  appContentBg: '#FFFFFF', // --color-white
-  appPreviewBg: '#FFFFFF',
+  appContentBg: '#FFFFFF', // --color-body (light)
+  appPreviewBg: '#FFFFFF', // --color-body (light)
   appBorderColor: '#E1E4E8',
   appBorderRadius: 8, // Based on your --border-radius-8
 

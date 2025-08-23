@@ -16,10 +16,10 @@ export default create({
   colorPrimary: '#3992E0', // --color-primary dark mode
   colorSecondary: '#B3B3B3',
 
-  // UI Background colors  
-  appBg: '#121212',
-  appContentBg: '#1a1a1a', 
-  appPreviewBg: '#1a1a1a',
+  // UI Background colors - using design system colors
+  appBg: '#0D111D', // --color-body (dark)
+  appContentBg: '#0D111D', // --color-body (dark)
+  appPreviewBg: '#0D111D', // --color-body (dark)
   appBorderColor: '#333333',
   appBorderRadius: 8,
 
@@ -32,16 +32,16 @@ export default create({
   barTextColor: '#B3B3B3',
   barSelectedColor: '#3992E0',
   barHoverColor: '#5BA3E6',
-  barBg: '#1e1e1e',
+  barBg: '#171B26', // --color-card (dark)
 
   // Form colors
-  inputBg: '#1e1e1e',
+  inputBg: '#171B26', // --color-card (dark)
   inputBorder: '#333333',
   inputTextColor: '#FFFFFF',
   inputBorderRadius: 6,
 
   // Button colors
-  buttonBg: '#1e1e1e',
+  buttonBg: '#171B26', // --color-card (dark)
   buttonBorder: '#333333',
   booleanBg: '#333333',
   booleanSelectedBg: '#3992E0',

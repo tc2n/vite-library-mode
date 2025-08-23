@@ -65,35 +65,35 @@
   /* Canvas background changes */
   .dark-theme .docs-story,
   .dark-theme #storybook-root {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
     color: #FFFFFF;
   }
 
   /* Story wrapper dark mode */
   .dark-theme .sb-story,
   .dark-theme .sb-main-padded {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
   }
 
   /* Canvas and preview backgrounds */
   .dark-theme #storybook-preview-wrapper,
   .dark-theme .sb-show-main,
   .dark-theme .sb-main-fullscreen {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
   }
 
   /* Controls panel */
   .dark-theme .docblock-argstable-body,
   .dark-theme .sidebar-container,
   .dark-theme .sb-addon-panel {
-    background-color: #1e1e1e !important;
+    background-color: var(--color-card) !important;
   }
 
   /* Input fields and controls */
   .dark-theme input,
   .dark-theme select,
   .dark-theme textarea {
-    background-color: #1e1e1e !important;
+    background-color: var(--color-card) !important;
     border-color: #333333 !important;
     color: #FFFFFF !important;
   }
@@ -204,7 +204,7 @@
   .dark-theme #panel-tab-content *,
   .dark-theme [data-testid*="addon-panel"] *,
   .dark-theme .addon-panel-wrapper * {
-    background-color: #1e1e1e !important;
+    background-color: var(--color-card) !important;
     color: #FFFFFF !important;
     border-color: #333333 !important;
   }
@@ -215,7 +215,7 @@
   .dark-theme tbody,
   .dark-theme tbody *,
   .dark-theme .addon-panel-wrapper table {
-    background-color: #1e1e1e !important;
+    background-color: var(--color-card) !important;
     color: #FFFFFF !important;
   }
 
@@ -242,7 +242,7 @@
   .dark-theme .sbdocs-content,
   .dark-theme .sb-anchor,
   .dark-theme .sb-unstyled {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
     color: #FFFFFF !important;
   }
 
@@ -251,7 +251,7 @@
   .dark-theme [data-docs-root],
   .dark-theme .css-175oi2r,
   .dark-theme .css-1dbjc4n {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
     color: #FFFFFF !important;
   }
 
@@ -272,13 +272,13 @@
   .dark-theme .docs-story,
   .dark-theme .docs-story > *,
   .dark-theme [data-docs-story] {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
   }
 
   /* Docs navigation and TOC */
   .dark-theme .css-1q9l2o8 div,
   .dark-theme .css-1q9l2o8 section {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
     color: #FFFFFF !important;
   }
 
@@ -306,6 +306,20 @@
   .dark-theme .sb-main-padded > div,
   .dark-theme .sb-main-padded > section,
   .dark-theme .sb-main-centered {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
+  }
+
+  /* Light theme canvas backgrounds using design system */
+  .light-theme .docs-story,
+  .light-theme #storybook-root,
+  .light-theme .sb-story,
+  .light-theme .sb-main-padded,
+  .light-theme #storybook-preview-wrapper,
+  .light-theme .sb-show-main,
+  .light-theme .sb-main-fullscreen,
+  body:not(.dark-theme) .docs-story,
+  body:not(.dark-theme) #storybook-root,
+  body:not(.dark-theme) .sb-story {
+    background-color: var(--color-body) !important;
   }
 </style>

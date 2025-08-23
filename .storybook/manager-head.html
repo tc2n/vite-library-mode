@@ -41,12 +41,12 @@
   [data-side="manager"].dark-theme,
   .dark-theme .sidebar-container,
   .dark-theme .os-content {
-    background-color: #121212 !important;
+    background-color: var(--color-body) !important;
   }
 
   /* Search input dark mode */
   .dark-theme input[placeholder*="Find"] {
-    background-color: #1e1e1e !important;
+    background-color: var(--color-card) !important;
     border-color: #333333 !important;
     color: #FFFFFF !important;
   }
@@ -76,6 +76,12 @@
 
   /* Loading states */
   .dark-theme .css-1dr5n6q {
-    background-color: #1a1a1a !important;
+    background-color: var(--color-body) !important;
+  }
+
+  /* Light theme manager backgrounds */
+  body:not(.dark-theme) .sidebar-container,
+  .light-theme .sidebar-container {
+    background-color: var(--color-body) !important;
   }
 </style>
