@@ -18,7 +18,8 @@ export default defineConfig({
     react(),
     libInjectCss(),
     dts({
-      tsconfigPath: resolve(__dirname, 'tsconfig.lib.json')
+      tsconfigPath: resolve(__dirname, 'tsconfig.lib.json'),
+      exclude: ["**/*.stories.{ts,tsx}"]
     })
   ],
   build: {
@@ -34,7 +35,7 @@ export default defineConfig({
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
         glob.sync('lib/**/*.{ts,tsx}', {
-          ignore: ["lib/**/*.d.ts"],
+          ignore: ["lib/**/*.d.ts", "lib/**/*.stories.{ts,tsx}"],
         }).map(file => [
           // 1. The name of the entry point
           // lib/nested/foo.js becomes nested/foo

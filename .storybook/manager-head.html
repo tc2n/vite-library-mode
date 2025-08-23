@@ -1,0 +1,81 @@
+<!-- Custom styles for Storybook UI -->
+<style>
+  /* Custom scrollbar to match design system */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #E1E4E8;
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D1D5DA;
+  }
+
+  /* Enhance sidebar styling */
+  .sidebar-container {
+    border-right: 1px solid #E1E4E8 !important;
+  }
+
+  /* Story panel enhancements */
+  .css-1s27gpq {
+    border-radius: 8px;
+  }
+
+  /* Custom focus styles to match design system */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #0877DB;
+    outline-offset: 2px;
+  }
+
+  /* Dark theme overrides for manager UI elements */
+  [data-side="manager"].dark-theme,
+  .dark-theme .sidebar-container,
+  .dark-theme .os-content {
+    background-color: #121212 !important;
+  }
+
+  /* Search input dark mode */
+  .dark-theme input[placeholder*="Find"] {
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Manager panels and modals */
+  .dark-theme .css-1q9l2o8,
+  .dark-theme .css-14t96ml,
+  .dark-theme .css-1k02bq1 {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Tooltip and dropdown overrides */
+  .dark-theme .css-79elbk,
+  .dark-theme .css-1czhqfs {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+  }
+
+  /* Canvas controls */
+  .dark-theme .css-1q9l2o8 > div,
+  .dark-theme .css-1q9l2o8 button {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Loading states */
+  .dark-theme .css-1dr5n6q {
+    background-color: #1a1a1a !important;
+  }
+</style>

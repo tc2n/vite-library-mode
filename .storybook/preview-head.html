@@ -1,0 +1,311 @@
+<!-- Custom styles for Storybook Docs -->
+<style>
+  /* Ensure consistent font rendering in docs */
+  .docs-story {
+    font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Light theme styles */
+  .light-theme .docs-story code,
+  body:not(.dark-theme) .docs-story code {
+    background-color: #F6F8FA;
+    color: #24292E;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Droid Sans Mono", monospace;
+  }
+
+  .light-theme .docblock-argstable table,
+  body:not(.dark-theme) .docblock-argstable table {
+    border: 1px solid #E1E4E8;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .light-theme .docblock-argstable th,
+  .light-theme .docblock-argstable td,
+  body:not(.dark-theme) .docblock-argstable th,
+  body:not(.dark-theme) .docblock-argstable td {
+    border-color: #E1E4E8;
+  }
+
+  .light-theme .docblock-argstable th,
+  body:not(.dark-theme) .docblock-argstable th {
+    background-color: #F6F8FA;
+    font-weight: 600;
+  }
+
+  /* Dark theme styles */
+  .dark-theme .docs-story code {
+    background-color: #1e1e1e;
+    color: #FFFFFF;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Droid Sans Mono", monospace;
+  }
+
+  .dark-theme .docblock-argstable table {
+    border: 1px solid #333333;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+  }
+
+  .dark-theme .docblock-argstable th,
+  .dark-theme .docblock-argstable td {
+    border-color: #333333;
+    color: #FFFFFF;
+  }
+
+  .dark-theme .docblock-argstable th {
+    background-color: #1e1e1e;
+    font-weight: 600;
+  }
+
+  /* Canvas background changes */
+  .dark-theme .docs-story,
+  .dark-theme #storybook-root {
+    background-color: #1a1a1a !important;
+    color: #FFFFFF;
+  }
+
+  /* Story wrapper dark mode */
+  .dark-theme .sb-story,
+  .dark-theme .sb-main-padded {
+    background-color: #1a1a1a !important;
+  }
+
+  /* Canvas and preview backgrounds */
+  .dark-theme #storybook-preview-wrapper,
+  .dark-theme .sb-show-main,
+  .dark-theme .sb-main-fullscreen {
+    background-color: #1a1a1a !important;
+  }
+
+  /* Controls panel */
+  .dark-theme .docblock-argstable-body,
+  .dark-theme .sidebar-container,
+  .dark-theme .sb-addon-panel {
+    background-color: #1e1e1e !important;
+  }
+
+  /* Input fields and controls */
+  .dark-theme input,
+  .dark-theme select,
+  .dark-theme textarea {
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Dropdown controls */
+  .dark-theme .css-26l3qy-menu,
+  .dark-theme .css-1pahdxg-control {
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Canvas toolbar */
+  .dark-theme .css-1s27gpq {
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+  }
+
+  /* Panel tabs */
+  .dark-theme .css-1mc2bby,
+  .dark-theme .css-1mc2bby button {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+  }
+
+  /* Ensure canvas iframe has dark background */
+  .dark-theme iframe[title="storybook-preview-iframe"] {
+    background-color: #1a1a1a !important;
+  }
+
+  /* Catch-all for remaining white backgrounds */
+  .dark-theme [style*="background: white"],
+  .dark-theme [style*="background-color: white"],
+  .dark-theme [style*="background: #fff"],
+  .dark-theme [style*="background-color: #fff"],
+  .dark-theme [style*="background: rgb(255, 255, 255)"] {
+    background-color: #1e1e1e !important;
+  }
+
+  /* General dark mode overrides */
+  .dark-theme .css-* {
+    --background-color: #1e1e1e;
+    --color: #ffffff;
+  }
+
+  /* Fix any remaining control panels */
+  .dark-theme [data-testid="panel-tab-content"],
+  .dark-theme .addon-panel-wrapper,
+  .dark-theme .addon-panel-wrapper > div,
+  .dark-theme [role="tabpanel"],
+  .dark-theme .css-1q9l2o8 {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Target specific control elements */
+  .dark-theme .docblock-argstable,
+  .dark-theme .docblock-argstable-head,
+  .dark-theme .docblock-argstable-body,
+  .dark-theme .docblock-argstable tr,
+  .dark-theme .docblock-argstable td {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+  }
+
+  /* Control input wrappers and containers */
+  .dark-theme .css-1pahdxg,
+  .dark-theme .css-1s2u09g,
+  .dark-theme .css-1hwfws3,
+  .dark-theme .css-15lsz6c {
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Select dropdown styling */
+  .dark-theme .css-1pahdxg-control,
+  .dark-theme .css-1pahdxg-control:hover,
+  .dark-theme .css-1pahdxg-control--is-focused,
+  .dark-theme .css-26l3qy-menu,
+  .dark-theme .css-4ljt47-MenuList {
+    background-color: #1e1e1e !important;
+    border-color: #333333 !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Dropdown options */
+  .dark-theme .css-1n7v3ny-option,
+  .dark-theme .css-1n7v3ny-option:hover,
+  .dark-theme .css-1n7v3ny-option--is-focused {
+    background-color: #333333 !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Control labels and text */
+  .dark-theme .docblock-argstable-head th,
+  .dark-theme .docblock-argstable-body td,
+  .dark-theme .css-1ml4c96,
+  .dark-theme .css-1eudcx4 {
+    color: #FFFFFF !important;
+    background-color: transparent !important;
+  }
+
+  /* Aggressive dark mode overrides for controls panel */
+  .dark-theme #panel-tab-content,
+  .dark-theme #panel-tab-content *,
+  .dark-theme [data-testid*="addon-panel"] *,
+  .dark-theme .addon-panel-wrapper * {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+  }
+
+  /* Specifically target the controls table area */
+  .dark-theme table,
+  .dark-theme table *,
+  .dark-theme tbody,
+  .dark-theme tbody *,
+  .dark-theme .addon-panel-wrapper table {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Override any remaining React Select styles */
+  .dark-theme [class*="css-"][class*="-control"],
+  .dark-theme [class*="css-"][class*="-menu"],
+  .dark-theme [class*="css-"][class*="-option"],
+  .dark-theme [class*="css-"][class*="-indicator"],
+  .dark-theme [class*="css-"][class*="-placeholder"] {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+  }
+
+  /* Last resort: target any remaining white backgrounds in controls */
+  .dark-theme [style*="background-color: rgb(255, 255, 255)"],
+  .dark-theme [style*="background: rgb(255, 255, 255)"] {
+    background-color: #1e1e1e !important;
+  }
+
+  /* Documentation/Docs specific dark mode fixes */
+  .dark-theme .sbdocs,
+  .dark-theme .sbdocs-wrapper,
+  .dark-theme .sbdocs-content,
+  .dark-theme .sb-anchor,
+  .dark-theme .sb-unstyled {
+    background-color: #1a1a1a !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Docs page container and sections */
+  .dark-theme .docs-story > div,
+  .dark-theme [data-docs-root],
+  .dark-theme .css-175oi2r,
+  .dark-theme .css-1dbjc4n {
+    background-color: #1a1a1a !important;
+    color: #FFFFFF !important;
+  }
+
+  /* MDX and docs content */
+  .dark-theme .sbdocs h1,
+  .dark-theme .sbdocs h2,
+  .dark-theme .sbdocs h3,
+  .dark-theme .sbdocs p,
+  .dark-theme .sbdocs div,
+  .dark-theme .sb-anchor h1,
+  .dark-theme .sb-anchor h2,
+  .dark-theme .sb-anchor h3 {
+    color: #FFFFFF !important;
+    background-color: transparent !important;
+  }
+
+  /* Docs story canvas within docs */
+  .dark-theme .docs-story,
+  .dark-theme .docs-story > *,
+  .dark-theme [data-docs-story] {
+    background-color: #1a1a1a !important;
+  }
+
+  /* Docs navigation and TOC */
+  .dark-theme .css-1q9l2o8 div,
+  .dark-theme .css-1q9l2o8 section {
+    background-color: #1a1a1a !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Documentation blocks and panels */
+  .dark-theme .docblock,
+  .dark-theme .docblock-source,
+  .dark-theme .css-mmotoh,
+  .dark-theme .css-1cpwmbr {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+  }
+
+  /* Code blocks in docs */
+  .dark-theme .docblock-source pre,
+  .dark-theme .docblock-source code,
+  .dark-theme .sbdocs pre,
+  .dark-theme .sbdocs code {
+    background-color: #1e1e1e !important;
+    color: #FFFFFF !important;
+    border-color: #333333 !important;
+  }
+
+  /* Comprehensive docs background override */
+  .dark-theme .sb-main-padded > div,
+  .dark-theme .sb-main-padded > section,
+  .dark-theme .sb-main-centered {
+    background-color: #1a1a1a !important;
+  }
+</style>
