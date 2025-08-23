@@ -150,10 +150,34 @@
     }
 }
 
+/* Icon specific styles */
+.content svg {
+    flex-shrink: 0;
+}
+
+/* Ensure icons inherit button color */
+.content span svg {
+    color: inherit;
+}
+
 .loader {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Spin animation for loading icons */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader :global(.animate-spin) {
+    animation: spin 1s linear infinite;
 }

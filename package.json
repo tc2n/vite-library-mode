@@ -5,6 +5,14 @@
   "type": "module",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
+  "author": "tusharc2n@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tc2n/vite-library-mode"
+  },
+  "homepage": "https://github.com/tc2n/vite-library-mode",
+  "bugs": "https://github.com/tc2n/vite-library-mode/issues",
   "files": [
     "dist"
   ],
@@ -24,11 +32,12 @@
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^0.541.0",
     "react-aria-components": "^1.11.0"
   },
   "peerDependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
