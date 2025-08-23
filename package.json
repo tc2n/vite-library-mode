@@ -1,6 +1,5 @@
 {
-  "name": "vite-library-mode",
-  "private": true,
+  "name": "@tc2n/vite-library-mode",
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/main.js",
@@ -9,7 +8,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tc2n/vite-library-mode"
+    "url": "git+https://github.com/tc2n/vite-library-mode.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "homepage": "https://github.com/tc2n/vite-library-mode",
   "bugs": "https://github.com/tc2n/vite-library-mode/issues",
