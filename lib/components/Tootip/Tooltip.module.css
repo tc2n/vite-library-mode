@@ -1,0 +1,37 @@
+.tooltip {
+    background-color: var(--color-tooltip-background);
+    color: var(--color-white);
+    border-radius: var(--border-radius-medium);
+    max-width: 300px;
+    transition: opacity 0.2s ease-in-out, scale 0.2s ease-in-out;
+
+    &[data-entering],
+    &[data-exiting] {
+        opacity: 0;
+        scale: 0.85;
+    }
+}
+
+.arrow {
+    fill: var(--color-tooltip-background);
+}
+
+.content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.para {
+    font-size: 14px;
+    font-weight: 500;
+}

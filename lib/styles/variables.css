@@ -1,3 +1,5 @@
 :root{
     --border-radius-small: .4rem;
+    --border-radius-medium: .8rem;
+    --border-radius-large: 1.2rem;
 }
